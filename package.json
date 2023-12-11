@@ -1,0 +1,55 @@
+{
+  "name": "capturejs",
+  "version": "0.3.0",
+  "description": "Full webpage capture command-line tool with PhantomJS and NodeJS",
+  "keywords": [
+    "phantomjs",
+    "screenshot"
+  ],
+  "homepage": "https://github.com/superbrothers/capturejs",
+  "bugs": {
+    "url": "https://github.com/superbrothers/capturejs/issues"
+  },
+  "license": "MIT",
+  "author": "Kazuki Suda <kazuki.suda@gmail.com>",
+  "files": [
+    "bin",
+    "lib",
+    "doc"
+  ],
+  "main": "lib/capturejs.js",
+  "bin": {
+    "capturejs": "bin/capturejs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/superbrothers/capturejs.git"
+  },
+  "scripts": {
+    "pretest": "rm -rf test/actual/*.gif",
+    "test-mocha": "mocha test/lib",
+    "test-nodeunit": "nodeunit test",
+    "test": "npm run test-nodeunit && npm run test-mocha && npm run lint",
+    "lint": "eslint bin/capturejs lib/ test/",
+    "precommit": "npm test",
+    "prepush": "npm test",
+    "pretest": "rimraf test/actual/*.png",
+    "postmerge": "npm install"
+  },
+  "dependencies": {
+    "nopt": "^3.0.1",
+    "phantom": "^2.1.20"
+  },
+  "devDependencies": {
+    "async": "^2.0.1",
+    "eslint": "^3.4.0",
+    "husky": "^0.11.6",
+    "mocha": "^3.0.2",
+    "nodeunit": "^0.10.0",
+    "rimraf": "^2.5.4",
+    "sinon": "^1.12.1"
+  },
+  "engines": {
+    "node": ">=4.5.0"
+  }
+}
